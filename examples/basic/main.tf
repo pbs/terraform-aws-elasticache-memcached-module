@@ -1,4 +1,4 @@
-module "MOD_SHORTNAME" {
+module "memcached" {
   source = "../.."
 
   organization = var.organization
