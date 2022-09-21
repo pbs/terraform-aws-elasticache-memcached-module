@@ -133,3 +133,15 @@ variable "nodes" {
     error_message = "The initial number of cache nodes must be between 1 and 40."
   }
 }
+
+variable "egress_cidr_blocks" {
+  description = "List of CIDR blocks to assign to the egress rule of the security group. If null, `egress_security_group_ids` must be used."
+  default     = ["10.0.0.0/8"]
+  type        = list(string)
+}
+
+variable "egress_source_sg_id" {
+  description = "List of security group ID to assign to the egress rule of the security group. If null, `egress_cidr_blocks` must be used."
+  default     = null
+  type        = string
+}
