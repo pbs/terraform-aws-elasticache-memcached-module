@@ -70,12 +70,6 @@ variable "subnet_group_name" {
   type        = string
 }
 
-variable "parameters" {
-  description = "Additional parameters that will be added to parameter group."
-  type        = list(map(any))
-  default     = []
-}
-
 variable "vpc_id" {
   description = "VPC ID to create the nodes in. If null, one will be guessed based on `vpc_data_lookup_tags`."
   default     = null
@@ -113,14 +107,8 @@ variable "sg_name" {
 }
 
 variable "parameter_group_name" {
-  description = "Name of the parameter group to be created. If null, one will be created using the name of the cluster."
+  description = "Name of the parameter group to be created."
   default     = null
-  type        = string
-}
-
-variable "parameter_group_version" {
-  description = "The major + minor version being used for the application when creating a parameter group."
-  default     = "1.6"
   type        = string
 }
 

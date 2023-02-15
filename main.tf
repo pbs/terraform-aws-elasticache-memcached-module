@@ -3,7 +3,7 @@ resource "aws_elasticache_cluster" "cluster" {
   engine               = local.engine
   node_type            = var.node_type
   num_cache_nodes      = var.nodes
-  parameter_group_name = local.parameter_group_name
+  parameter_group_name = var.parameter_group_name
 
   apply_immediately = var.apply_immediately
 
