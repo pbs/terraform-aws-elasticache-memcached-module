@@ -7,7 +7,7 @@
 Use this URL for the source of the module. See the usage examples below for more details.
 
 ```hcl
-github.com/pbs/terraform-aws-elasticache-memcached-module?ref=0.0.3
+github.com/pbs/terraform-aws-elasticache-memcached-module?ref=x.y.z
 ```
 
 ### Alternative Installation Methods
@@ -22,7 +22,7 @@ Integrate this module like so:
 
 ```hcl
 module "elasticache-memcached" {
-  source = "github.com/pbs/terraform-aws-elasticache-memcached-module?ref=0.0.3"
+  source = "github.com/pbs/terraform-aws-elasticache-memcached-module?ref=x.y.z"
 
   # Tagging Parameters
   organization = var.organization
@@ -38,7 +38,7 @@ module "elasticache-memcached" {
 
 If this repo is added as a subtree, then the version of the module should be close to the version shown here:
 
-`0.0.3`
+`x.y.z`
 
 Note, however that subtrees can be altered as desired within repositories.
 
@@ -72,7 +72,6 @@ No modules.
 | Name | Type |
 |------|------|
 | [aws_elasticache_cluster.cluster](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/elasticache_cluster) | resource |
-| [aws_elasticache_parameter_group.parameter_group](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/elasticache_parameter_group) | resource |
 | [aws_elasticache_subnet_group.subnet_group](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/elasticache_subnet_group) | resource |
 | [aws_security_group.sg](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/security_group) | resource |
 | [aws_security_group_rule.egress](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/security_group_rule) | resource |
@@ -98,9 +97,7 @@ No modules.
 | <a name="input_node_type"></a> [node\_type](#input\_node\_type) | ElastiCache node type | `string` | `"cache.t3.micro"` | no |
 | <a name="input_nodes"></a> [nodes](#input\_nodes) | The initial number of cache nodes that the cache cluster will have. This value must be between 1 and 40. If this number is reduced on subsequent runs, the highest numbered nodes will be removed. | `number` | `2` | no |
 | <a name="input_notification_topic_arn"></a> [notification\_topic\_arn](#input\_notification\_topic\_arn) | ARN of an SNS topic to send ElastiCache notifications to. Example: arn:aws:sns:us-east-1:012345678999:my\_sns\_topic. | `string` | `null` | no |
-| <a name="input_parameter_group_name"></a> [parameter\_group\_name](#input\_parameter\_group\_name) | Name of the parameter group to be created. If null, one will be created using the name of the cluster. | `string` | `null` | no |
-| <a name="input_parameter_group_version"></a> [parameter\_group\_version](#input\_parameter\_group\_version) | The major + minor version being used for the application when creating a parameter group. | `string` | `"1.6"` | no |
-| <a name="input_parameters"></a> [parameters](#input\_parameters) | Additional parameters that will be added to parameter group. | `list(map(any))` | `[]` | no |
+| <a name="input_parameter_group_name"></a> [parameter\_group\_name](#input\_parameter\_group\_name) | Name of the parameter group to be created. | `string` | `null` | no |
 | <a name="input_port"></a> [port](#input\_port) | The port number on which each of the cache nodes will accept connections. Changing this value will re-create the resource. | `number` | `11211` | no |
 | <a name="input_preferred_availability_zones"></a> [preferred\_availability\_zones](#input\_preferred\_availability\_zones) | List of the Availability Zones in which cache nodes are created. If you are creating your cluster in an Amazon VPC you can only locate nodes in Availability Zones that are associated with the subnets in the selected subnet group. The number of Availability Zones listed must equal the value of num\_cache\_nodes. If you want all the nodes in the same Availability Zone, use availability\_zone instead, or repeat the Availability Zone multiple times in the list. Default: System chosen Availability Zones. Detecting drift of existing node availability zone is not currently supported. Updating this argument by itself to migrate existing node availability zones is not currently supported and will show a perpetual difference. | `list(string)` | `null` | no |
 | <a name="input_security_group_ids"></a> [security\_group\_ids](#input\_security\_group\_ids) | One or more VPC security groups associated with the nodes. If null, use the one provided by this module. | `list(string)` | `null` | no |
